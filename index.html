@@ -1,0 +1,589 @@
+<title>Srikar Reddy Nadide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #0B0F1A;
+    --bg-alt: #14141F;
+    --surface: #1A1A29;
+    --ink: #FFFFFF;
+    --ink-soft: #B3B3C2;
+    --accent: #7F5AF0;
+    --accent-alt: #2CB1FF;
+    --line: rgba(255,255,255,0.08);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior: auto; } }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Poppins", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap{ max-width: 980px; margin: 0 auto; padding: 0 1.75rem; }
+  .prose{ max-width: 640px; }
+  a{ color: inherit; }
+
+  h1, h2, h3, h4{
+    font-family: "Poppins", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .eyebrow{
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-alt);
+  }
+
+  .gradient-text{
+    background: linear-gradient(90deg, var(--accent), var(--accent-alt));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ---------- nav ---------- */
+  nav{
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(13,13,23,0.75);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-row{
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 0;
+  }
+  .mark{
+    display: flex; align-items: center; gap: 0.6rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .mark-badge{
+    width: 32px; height: 32px; border-radius: 9px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-alt));
+    color: #FFFFFF;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-size: 0.7rem;
+  }
+  .nav-links{
+    display: flex; gap: 2rem;
+    list-style: none; margin: 0; padding: 0;
+  }
+  .nav-links a{
+    position: relative;
+    font-size: 0.92rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--ink-soft);
+    padding-bottom: 6px;
+    transition: color .15s ease;
+  }
+  .nav-links a::after{
+    content: ''; position: absolute; left: 0; bottom: 0; height: 2px; width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-alt));
+    transition: width .3s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{ color: var(--ink); }
+  .nav-links a:hover::after, .nav-links a:focus-visible::after{ width: 100%; }
+  @media (max-width: 680px){ .nav-links{ display:none; } }
+
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--accent-alt);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    padding: 0.8rem 1.6rem;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease, opacity .15s ease;
+  }
+  .btn:disabled{ cursor: default; opacity: 0.6; transform: none; }
+  .btn-solid{
+    background: linear-gradient(90deg, var(--accent), var(--accent-alt));
+    color: #FFFFFF;
+    box-shadow: 0 0 18px rgba(127,90,240,0.4);
+  }
+  .btn-solid:hover{ transform: translateY(-3px); box-shadow: 0 8px 26px rgba(127,90,240,0.55); }
+  .btn-outline{ background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+  .btn-outline:hover{ border-color: var(--accent-alt); color: var(--accent-alt); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position: relative;
+    padding: 5.5rem 0 5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero::before, .hero::after{
+    content: ''; position: absolute; width: 420px; height: 420px; border-radius: 50%;
+    filter: blur(110px); opacity: 0.3; z-index: 0;
+  }
+  .hero::before{ background: var(--accent); top: -140px; left: -120px; }
+  .hero::after{ background: var(--accent-alt); bottom: -160px; right: -100px; }
+  .hero > *{ position: relative; z-index: 1; }
+
+  .avatar{
+    width: 132px; height: 132px; border-radius: 50%;
+    background: var(--bg-alt);
+    border: 4px solid var(--accent);
+    color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 2.1rem;
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+    box-shadow: 0 0 25px rgba(127,90,240,0.75), 0 0 60px rgba(44,177,255,0.35);
+  }
+  .hero h1{
+    font-size: clamp(2.3rem, 5vw, 3.4rem);
+    line-height: 1.15;
+    margin: 0.6rem 0 1rem;
+  }
+  .hero .tagline{
+    max-width: 56ch;
+    color: var(--ink-soft);
+    font-size: 1.08rem;
+    line-height: 1.8;
+    margin-bottom: 1.9rem;
+  }
+  .hero-actions{ display: flex; flex-wrap: wrap; gap: 0.9rem; }
+  @media (max-width: 700px){
+    .hero{ grid-template-columns: 1fr; text-align: center; padding-top: 3.5rem; }
+    .avatar{ margin: 0 auto; }
+    .hero .tagline{ margin-left: auto; margin-right: auto; }
+    .hero-actions{ justify-content: center; }
+  }
+
+  /* ---------- sections ---------- */
+  section{ padding: 4.5rem 0; border-top: 1px solid var(--line); }
+  .section-head{ margin-bottom: 2.4rem; }
+  .section-head h2{ font-size: clamp(1.7rem, 3vw, 2.3rem); margin-top: 0.5rem; }
+
+  p{ margin: 0 0 1rem; }
+  p:last-child{ margin-bottom: 0; }
+
+  /* ---------- about ---------- */
+  #about .prose{ font-size: 1.08rem; color: var(--ink-soft); }
+
+  /* ---------- education ---------- */
+  .edu-table{ display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .edu-row{
+    display: grid; grid-template-columns: 2.4fr 1.6fr auto;
+    gap: 1rem; align-items: center;
+    background: var(--surface);
+    padding: 1.1rem 1.3rem;
+  }
+  .edu-row .qual{ font-family: "Poppins", sans-serif; font-weight: 600; font-size: 1rem; }
+  .edu-row .inst{ color: var(--ink-soft); font-size: 0.92rem; }
+  .edu-row .detail{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem; font-weight: 500;
+    color: var(--accent-alt);
+    background: rgba(44,177,255,0.12);
+    padding: 0.3rem 0.65rem;
+    border-radius: 5px;
+    white-space: nowrap;
+    justify-self: end;
+  }
+  @media (max-width: 620px){
+    .edu-row{ grid-template-columns: 1fr; text-align: left; }
+    .edu-row .detail{ justify-self: start; }
+  }
+
+  /* ---------- skills ---------- */
+  .skills-groups{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .skill-card{
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 1.5rem;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .skill-card:hover{ border-color: var(--accent); transform: translateY(-3px); }
+  .skill-card h3{ font-size: 0.78rem; font-family: "IBM Plex Mono", monospace; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 1rem; }
+  .skill-tags{ display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-tags span{
+    font-size: 0.88rem; font-weight: 600;
+    background: rgba(127,90,240,0.14); color: var(--ink);
+    padding: 0.4rem 0.75rem; border-radius: 6px;
+    border: 1px solid rgba(127,90,240,0.3);
+  }
+  @media (max-width: 720px){ .skills-groups{ grid-template-columns: 1fr; } }
+
+  /* ---------- project ---------- */
+  .project-card{
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 2rem;
+    display: grid; grid-template-columns: 1fr 260px; gap: 2.5rem; align-items: start;
+  }
+  .project-card h3{ font-size: 1.5rem; margin-bottom: 0.6rem; }
+  .project-card .lede{ color: var(--ink-soft); }
+  .tags{ display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.1rem 0 0; }
+  .tag{
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem; font-weight: 500;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    padding: 0.28rem 0.65rem; border-radius: 5px;
+  }
+  @media (max-width: 760px){
+    .project-card{ grid-template-columns: 1fr; }
+    .project-figure{ justify-self: start; width: 100%; }
+    .app-shot{ width: 100%; max-width: 280px; }
+  }
+
+  /* ---------- app screenshot mockup ---------- */
+  .app-shot{
+    width: 260px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #14171D;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 18px 40px -18px rgba(0,0,0,0.55);
+  }
+  .app-shot-bar{ display: flex; align-items: center; gap: 6px; padding: 8px 10px; background: #0F1116; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .app-shot-bar .dot{ width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.18); }
+  .app-shot-bar .url{ margin-left: 6px; font-family: "IBM Plex Mono", monospace; font-size: 0.62rem; color: rgba(255,255,255,0.35); letter-spacing: 0.02em; }
+  .app-shot-body{ padding: 16px; color: #F2F1E9; }
+  .app-shot-body h4{ font-family: "Poppins", sans-serif; font-weight: 700; font-size: 1rem; margin: 0 0 10px; letter-spacing: -0.01em; }
+  .app-shot-body .label{ font-size: 0.68rem; color: #9BA0A6; margin: 0 0 6px; }
+  .file-chip{ display: flex; align-items: center; gap: 8px; background: #1F232B; border: 1px solid rgba(255,255,255,0.07); border-radius: 6px; padding: 7px 10px; margin-bottom: 12px; }
+  .file-chip svg{ flex-shrink: 0; }
+  .file-chip .fname{ display: block; font-size: 0.68rem; color: #E7E5DA; font-family: "IBM Plex Mono", monospace; }
+  .file-chip .fsize{ display: block; font-size: 0.58rem; color: #767B82; font-family: "IBM Plex Mono", monospace; }
+  .shot-row{ display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .shot-thumb{ width: 52px; height: 52px; border-radius: 6px; background: #F3D6D9; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .classify-btn{ font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; letter-spacing: 0.03em; color: #F2F1E9; border: 1px solid rgba(255,255,255,0.22); border-radius: 5px; padding: 6px 14px; }
+  .prediction{ background: #2E7D46; color: #F4FBF3; font-size: 0.72rem; font-family: "IBM Plex Mono", monospace; border-radius: 6px; padding: 9px 12px; line-height: 1.4; }
+  .prediction strong{ font-weight: 600; }
+
+  /* ---------- certification ---------- */
+  .cert-card{
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 2rem;
+    display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; align-items: flex-start;
+  }
+  .cert-card h3{ font-size: 1.25rem; margin-bottom: 0.3rem; }
+  .cert-card .org{ color: var(--ink-soft); font-size: 0.9rem; margin-bottom: 0.8rem; }
+  .cert-card .desc{ color: var(--ink-soft); max-width: 56ch; }
+
+  /* ---------- contact / footer ---------- */
+  footer{ padding: 5rem 0 4rem; }
+  footer .inner{
+    position: relative; overflow: hidden;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+    padding: 3.2rem 2.5rem; text-align: center;
+  }
+  footer h2{ font-size: clamp(1.8rem, 4vw, 2.6rem); max-width: 20ch; margin: 0 auto 1.1rem; }
+  footer .sub{ color: var(--ink-soft); max-width: 46ch; margin: 0 auto 1.8rem; }
+</style>
+
+<nav>
+  <div class="wrap nav-row">
+    <a href="#top" class="mark"><span class="mark-badge">SRN</span>Srikar Reddy</a>
+    <ul class="nav-links">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="top" class="wrap hero">
+  <div class="avatar" aria-hidden="true">SRN</div>
+  <div>
+    <p class="eyebrow">Hi, I'm Srikar Reddy Nadide</p>
+    <h1>Turning coursework into <span class="gradient-text">working software.</span></h1>
+    <p class="tagline">B.Sc. Computer Science graduate looking for an entry-level role where I can apply my programming and web development skills, work on real problems, and grow alongside an experienced team.</p>
+    <div class="hero-actions">
+      <button type="button" id="download-cv-btn" class="btn btn-solid">Download CV</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">About</p>
+        <h2>Who I am</h2>
+      </div>
+      <div class="prose">
+        <p>Motivated B.Sc. Computer Science graduate seeking an entry-level role where I can apply my programming and web development skills, work on real-world problems, learn from an experienced team, and grow as a software professional.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Education</p>
+        <h2>Academic background</h2>
+      </div>
+      <div class="edu-table">
+        <div class="edu-row">
+          <span class="qual">B.Sc. Computer Science</span>
+          <span class="inst">Bhavan's New Science College</span>
+          <span class="detail">2023&ndash;2026</span>
+        </div>
+        <div class="edu-row">
+          <span class="qual">Intermediate (MPC)</span>
+          <span class="inst">Mathematics, Physics, Chemistry</span>
+          <span class="detail">80.7%</span>
+        </div>
+        <div class="edu-row">
+          <span class="qual">SSC</span>
+          <span class="inst">&nbsp;</span>
+          <span class="detail">GPA: 10.0</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Skills</p>
+        <h2>Technical skills</h2>
+      </div>
+      <div class="skills-groups">
+        <div class="skill-card">
+          <h3>Programming</h3>
+          <div class="skill-tags">
+            <span>C</span><span>C++</span><span>Java</span><span>Python</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Web Technologies</h3>
+          <div class="skill-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Database</h3>
+          <div class="skill-tags">
+            <span>SQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Academic Project</p>
+        <h2>Featured work</h2>
+      </div>
+      <div class="project-card">
+        <div>
+          <h3>Crop Disease Detection System</h3>
+          <p class="lede">Developed a computer-vision based application to identify whether a crop/leaf image is healthy or diseased.</p>
+          <p>The project uses image preprocessing and a machine-learning model, with a simple web interface for uploading an image and viewing the prediction.</p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+        <div class="project-figure" role="img" aria-label="Screenshot of the Plant Disease Classifier app: an uploaded leaf image with the result Prediction: Potato Late blight">
+          <div class="app-shot">
+            <div class="app-shot-bar">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="url">localhost:8501</span>
+            </div>
+            <div class="app-shot-body">
+              <h4>Plant Disease Classifier</h4>
+              <p class="label">Upload an image&hellip;</p>
+              <div class="file-chip">
+                <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 1.5h6l3.5 3.5v9.5H3z" fill="none" stroke="#8A8F97" stroke-width="1"/><path d="M9 1.5V5h3.5" fill="none" stroke="#8A8F97" stroke-width="1"/></svg>
+                <div>
+                  <span class="fname">leaf_sample.jpg</span>
+                  <span class="fsize">20.9KB</span>
+                </div>
+              </div>
+              <div class="shot-row">
+                <div class="shot-thumb">
+                  <svg viewBox="0 0 60 60" width="42" height="42" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="leafRealFill" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#BAC96C"/>
+                        <stop offset="45%" stop-color="#8CA84C"/>
+                        <stop offset="100%" stop-color="#5E7A34"/>
+                      </linearGradient>
+                      <radialGradient id="blightSpot" cx="50%" cy="50%" r="55%">
+                        <stop offset="0%" stop-color="#43290F"/>
+                        <stop offset="45%" stop-color="#6B4423"/>
+                        <stop offset="80%" stop-color="#9C7A3B" stop-opacity="0.85"/>
+                        <stop offset="100%" stop-color="#C9B24A" stop-opacity="0"/>
+                      </radialGradient>
+                    </defs>
+                    <path d="M30 5 C42 6 52 16 53 28 C54 40 46 50 34 53 C29 54 24 53 20 50 C10 44 6 32 9 21 C12 11 20 5 30 5 Z" fill="url(#leafRealFill)"/>
+                    <path d="M30 5 C42 6 52 16 53 28 C54 40 46 50 34 53 C29 54 24 53 20 50 C10 44 6 32 9 21 C12 11 20 5 30 5 Z" fill="none" stroke="#3E5028" stroke-width="0.8" opacity="0.6"/>
+                    <path d="M30 10 C29 24 30 38 27 50" fill="none" stroke="#4A5E2C" stroke-width="1" opacity="0.5"/>
+                    <path d="M34 26 C42 24 47 29 46 36 C45 43 37 46 31 42 C26 39 25 32 29 28 C30 27 32 26 34 26 Z" fill="url(#blightSpot)"/>
+                    <path d="M18 40 C22 39 25 42 24 46 C23 49 18 50 15 48 C13 46 13 43 15 41 C16 40 17 40 18 40 Z" fill="url(#blightSpot)" opacity="0.75"/>
+                  </svg>
+                </div>
+                <span class="classify-btn">Classify</span>
+              </div>
+              <div class="prediction">Prediction: <strong>Potato___Late_blight</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Certifications &amp; Achievements</p>
+        <h2>Recognition</h2>
+      </div>
+      <div class="cert-card">
+        <div>
+          <h3>Udbhavathon 2026 &mdash; Certificate of Participation</h3>
+          <div class="org">Bhavan's New Science College</div>
+          <p class="desc">Actively participated in Udbhavathon 2026 and worked on a Semantic Segmentation solution in the field of Computer Vision, demonstrating problem-solving, innovation, and technical implementation skills.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="inner">
+      <p class="eyebrow" style="justify-content:center; display:flex;">Contact</p>
+      <h2>Let's build something together.</h2>
+      <p class="sub">I'm open to entry-level software and web development roles. Reach out and I'll get back to you.</p>
+      <a class="btn btn-solid" href="mailto:srikarreddy798@gmail.com">srikarreddy798@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CV_HTML = '<!doctype html>\n'
+    + '<html lang="en"><head><meta charset="utf-8">\n'
+    + '<title>Srikar Reddy Nadide — Resume</title>\n'
+    + '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+    + '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
+    + '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
+    + '<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">\n'
+    + '<style>\n'
+    + '  :root{ --ink:#1a1a1a; --ink-soft:#555; --accent:#4a3aa8; --line:#c9c9c9; --bg:#ffffff; }\n'
+    + '  *{ box-sizing:border-box; }\n'
+    + '  body{ margin:0 auto; background:var(--bg); color:var(--ink); font-family:"Poppins","Segoe UI",Arial,sans-serif; font-size:12px; line-height:1.4; padding:1.8rem 2.4rem; max-width:800px; }\n'
+    + '  .name{ font-size:1.55rem; font-weight:700; letter-spacing:0.01em; margin:0 0 0.15rem; color:var(--ink); text-align:center; }\n'
+    + '  .contact{ text-align:center; font-size:0.78rem; color:var(--ink-soft); margin:0 0 0.2rem; }\n'
+    + '  .contact a{ color:var(--accent); text-decoration:none; font-weight:500; }\n'
+    + '  hr.top{ border:none; border-top:2px solid var(--accent); margin:0.7rem 0 0.9rem; }\n'
+    + '  h2{ font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); border-bottom:2px solid var(--line); padding-bottom:0.25rem; margin:1rem 0 0.45rem; }\n'
+    + '  h2:first-of-type{ margin-top:0; }\n'
+    + '  p{ margin:0 0 0.4rem; color:var(--ink); text-align:justify; }\n'
+    + '  ul{ margin:0 0 0.4rem; padding-left:1.1rem; }\n'
+    + '  li{ margin-bottom:0.2rem; }\n'
+    + '  .muted{ color:var(--ink-soft); }\n'
+    + '  .row{ display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:0.35rem; }\n'
+    + '  .row:last-child{ margin-bottom:0; }\n'
+    + '  .row .q{ font-weight:600; }\n'
+    + '  .row .inst{ color:var(--ink-soft); font-size:0.85rem; }\n'
+    + '  .row .d{ font-size:0.78rem; color:var(--ink-soft); white-space:nowrap; }\n'
+    + '  .skills-line{ margin-bottom:0.25rem; }\n'
+    + '  .skills-line .label{ font-weight:600; display:inline-block; min-width:9.5rem; }\n'
+    + '  .proj-title, .cert-title{ font-weight:600; font-size:0.9rem; margin-bottom:0.1rem; }\n'
+    + '  .proj-tech{ font-size:0.75rem; color:var(--ink-soft); font-style:italic; margin-bottom:0.3rem; }\n'
+    + '  @media print{ body{ padding:0.5in; font-size:11px; } }\n'
+    + '</style></head><body>\n'
+    + '  <div class="name">SRIKAR REDDY NADIDE</div>\n'
+    + '  <p class="contact">Hyderabad, Telangana, India &nbsp;|&nbsp; <a href="tel:+919640612860">+91 9640612860</a> &nbsp;|&nbsp; <a href="mailto:srikarreddy798@gmail.com">srikarreddy798@gmail.com</a></p>\n'
+    + '  <hr class="top">\n'
+    + '\n'
+    + '  <h2>Career Objective</h2>\n'
+    + '  <p>Motivated B.Sc. Computer Science graduate seeking an entry-level role where I can apply my programming and web development skills, work on real-world problems, learn from an experienced team, and grow as a software professional.</p>\n'
+    + '\n'
+    + '  <h2>Education</h2>\n'
+    + '  <div class="row"><span><span class="q">B.Sc. Computer Science</span> <span class="inst">&mdash; Bhavan’s New Science College</span></span><span class="d">2023&ndash;2026</span></div>\n'
+    + '  <div class="row"><span class="q">Intermediate (MPC)</span><span class="d">80.7%</span></div>\n'
+    + '  <div class="row"><span class="q">SSC</span><span class="d">GPA: 10.0</span></div>\n'
+    + '\n'
+    + '  <h2>Technical Skills</h2>\n'
+    + '  <div class="skills-line"><span class="label">Programming:</span> C, C++, Java, Python</div>\n'
+    + '  <div class="skills-line"><span class="label">Web Technologies:</span> HTML, CSS, JavaScript</div>\n'
+    + '  <div class="skills-line"><span class="label">Database:</span> SQL</div>\n'
+    + '\n'
+    + '  <h2>Academic Project</h2>\n'
+    + '  <div class="proj-title">Crop Disease Detection System</div>\n'
+    + '  <div class="proj-tech">Python &middot; Machine Learning &middot; HTML &middot; CSS &middot; JavaScript</div>\n'
+    + '  <p>Developed a computer-vision based application to identify whether a crop/leaf image is healthy or diseased. The project uses image preprocessing and a machine-learning model, with a simple web interface for uploading an image and viewing the prediction.</p>\n'
+    + '\n'
+    + '  <h2>Certifications &amp; Achievements</h2>\n'
+    + '  <div class="cert-title">Udbhavathon 2026 &mdash; Certificate of Participation</div>\n'
+    + '  <p class="muted" style="margin-bottom:0.4rem;">Bhavan’s New Science College</p>\n'
+    + '  <p>Actively participated in Udbhavathon 2026 and worked on a Semantic Segmentation solution in the field of Computer Vision, demonstrating problem-solving, innovation, and technical implementation skills.</p>\n'
+    + '</body></html>\n';
+
+  function triggerDownload(filename, content, mime){
+    var blob = new Blob([content], { type: mime });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  }
+
+  function init(){
+    var btn = document.getElementById('download-cv-btn');
+    if (!btn) return;
+
+    btn.addEventListener('click', function(){
+      var original = btn.textContent;
+      triggerDownload('Srikar_Reddy_Nadide_CV.html', CV_HTML, 'text/html');
+      btn.textContent = 'Downloaded';
+      setTimeout(function(){ btn.textContent = original; }, 1800);
+    });
+  }
+
+  init();
+})();
+</script>
